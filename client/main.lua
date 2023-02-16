@@ -106,11 +106,9 @@ Citizen.CreateThread(function()
 							local vassouspawn = CreateObject(`prop_tool_broom`, cSCoords.x, cSCoords.y, cSCoords.z, 1, 1, 1)
 							local netid = ObjToNet(vassouspawn)
 
-							QBCore.Shared.RequestAnimDict("amb@world_human_janitor@male@idle_a", function()
-								TaskPlayAnim(PlayerPedId(), "amb@world_human_janitor@male@idle_a", "idle_a", 8.0, -8.0, -1, 0, 0, false, false, false)
+							TaskStartScenarioInPlace(PlayerPedId(), "world_human_janitor", 0, false)
 								AttachEntityToEntity(vassouspawn,GetPlayerPed(PlayerId()),GetPedBoneIndex(GetPlayerPed(PlayerId()), 28422),-0.005,0.0,0.0,360.0,360.0,0.0,1,1,0,1,0,1)
 								vassour_net = netid
-							end)
 
 							Citizen.Wait(10000)
 							disable_actions = false
